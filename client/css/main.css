@@ -1,0 +1,66 @@
+body {
+    background-color: white;
+    color: #303030;
+    font-size: 15px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 20px;
+}
+
+main {
+    background-color: #F0F0F0;
+    border-radius: 6px;
+    box-shadow: 3px 3px 12px #C8C8C8;
+    margin: 20px auto;
+    max-width: 450px;
+    padding: 20px
+}
+
+ol {
+    list-style: none;
+    margin-bottom: 20px;
+    margin-top: 0;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+}
+
+li:nth-child(odd) {
+    background-color: #E3E3E3;
+    border-radius: 6px;
+}
+
+form {
+    background-color: lightsteelblue;
+    border-radius: 6px;
+    margin: 0;
+    padding: 10px;
+}
+
+button {
+    background-color: cornflowerblue;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
+
+input {
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+    padding: 5px;
+}
+
+#initials {
+    width: 40px;
+}
+
+#message {
+    width: 298px;
+}
+
