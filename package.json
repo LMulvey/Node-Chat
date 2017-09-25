@@ -4,8 +4,8 @@
   "description": "Node chat.",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.15.5",
-    "socket.io": "^2.0.3"
+    "express": "4.15.5",
+    "socket.io": "2.0.3"
   },
   "devDependencies": {},
   "scripts": {
