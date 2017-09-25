@@ -7,13 +7,19 @@ const server = http.Server(app);
 app.use(express.static('client'));
 
 const io = require('socket.io')(server);
-const messages = [];
+const messages = [
+    'CK says: How\'s it going?',
+    'LM says: Pretty good, hanging out at school.',
+    'RP says: Dank.',
+    'CK says: How about you?',
+    'RP says: Ayyyy'
+];
 
 io.on('connection', (socket) => {
 
+    console.log('New User connected. Sending chat history.');
     messages.forEach((msg) => {
         io.emit('message', msg);
-        console.log('New User connected. Sending chat history.');
     });
 
     socket.on('message', (msg) => {
