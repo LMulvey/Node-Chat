@@ -18,12 +18,23 @@ const messages = [
 ];
 
 io.on('connection', (socket) => {
+
+    //io == server
+    //socket == new socket/client
     
     console.log('New User connected. Sending chat history.');
     messages.forEach((msg) => {
         socket.emit('message', msg);
     });
 
+    socket.on('typing', () => {
+        io.emit('typing');
+    });
+    
+    socket.on('stop-typing', () => {
+       io.emit('stop-typing'); 
+    });
+    
     socket.on('message', (msg) => {
         io.emit('message', msg);
         messages.push(msg);
