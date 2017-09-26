@@ -41,6 +41,6 @@ socket.on('typing', () => {
 });
 
 socket.on('stop-typing', () => {
-   $('#typing').fadeOut(1200, () => remove());
+   $('#typing').fadeOut(1200, () => $(this).remove());
 });
 
