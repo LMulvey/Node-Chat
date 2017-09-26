@@ -33,7 +33,7 @@ io.on('connection', (socket) => {
         if(!socket.typing) {
             io.emit('typing');
             socket.typing = true;
-            setTimeout(io.emit('stop-typing'), 5000)
+            setTimeout(() => io.emit('stop-typing'), 5000)
         }
     });
     
