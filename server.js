@@ -17,7 +17,7 @@ const messages = [
     'RP says: Ayyyy'
 ];
 
-const typing = false;
+let typing = false;
 
 io.on('connection', (socket) => {
 
