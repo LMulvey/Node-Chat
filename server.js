@@ -17,10 +17,10 @@ const messages = [
     'RP says: Ayyyy'
 ];
 
+const typing = false;
+
 io.on('connection', (socket) => {
 
-    socket.typing = false;
-    
     //io == server
     //socket == new socket/client
     
@@ -32,14 +32,14 @@ io.on('connection', (socket) => {
     socket.on('typing', () => {
         if(!socket.typing) {
             io.emit('typing');
-            socket.typing = true;
+            typing = true;
             setTimeout(() => io.emit('stop-typing'), 5000)
         }
     });
     
     socket.on('stop-typing', () => {
        io.emit('stop-typing'); 
-        socket.typing = false;
+        typing = false;
     });
     
     socket.on('message', (msg) => {
