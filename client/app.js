@@ -1,5 +1,4 @@
 const socket = io();
-const typing = false;
 
 $('form').submit(() => {
     if($('#message').val() == '') {
@@ -18,11 +17,7 @@ $('form').submit(() => {
 });
 
 $('#message').keydown(() => {
-   if(!typing) {
        socket.emit('typing');
-       typing = true;
-       setTimeout(socket.emit('stop-typing'), 5000)
-   }
 });
 
 socket.on('message', (msg) => {
@@ -35,7 +30,5 @@ socket.on('typing', () => {
 
 socket.on('stop-typing', () => {
    $('#typing').remove();
-    typing = false;
-    console.log('Stopped typing.')
 });
 

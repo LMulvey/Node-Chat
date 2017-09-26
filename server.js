@@ -19,6 +19,8 @@ const messages = [
 
 io.on('connection', (socket) => {
 
+    socket.typing = false;
+    
     //io == server
     //socket == new socket/client
     
@@ -28,11 +30,16 @@ io.on('connection', (socket) => {
     });
 
     socket.on('typing', () => {
-        io.emit('typing');
+        if(!socket.typing) {
+            io.emit('typing');
+            socket.typing = true;
+            setTimeout(io.emit('stop-typing'), 5000)
+        }
     });
     
     socket.on('stop-typing', () => {
        io.emit('stop-typing'); 
+        socket.typing = false;
     });
     
     socket.on('message', (msg) => {
