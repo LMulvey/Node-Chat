@@ -4,6 +4,8 @@ const app = express();
 const http = require('http');
 const server = http.Server(app);
 
+const PORT = process.env.PORT || 8080;
+
 app.use(express.static('client'));
 
 const io = require('socket.io')(server);
@@ -16,10 +18,10 @@ const messages = [
 ];
 
 io.on('connection', (socket) => {
-
+    
     console.log('New User connected. Sending chat history.');
     messages.forEach((msg) => {
-        io.emit('message', msg);
+        socket.emit('message', msg);
     });
 
     socket.on('message', (msg) => {
@@ -29,6 +31,6 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(process.env.PORT, () => {
+server.listen(PORT, () => {
     console.log('Your chat server is live now.');
 });
