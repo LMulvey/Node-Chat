@@ -29,6 +29,6 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(8080, () => {
+server.listen(process.env.PORT, () => {
     console.log('Your chat server is live now.');
 });
