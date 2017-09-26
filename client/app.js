@@ -30,11 +30,12 @@ socket.on('message', (msg) => {
 });
 
 socket.on('typing', () => {
-    $('<span id="typing">').text('<em>Someone is typing....</em>').prependTo('form');
+    $('<span id="typing">').html('<em>Someone is typing....</em>').prependTo('form');
 });
 
 socket.on('stop-typing', () => {
    $('#typing').remove();
     typing = false;
+    console.log('Stopped typing.')
 });
 
