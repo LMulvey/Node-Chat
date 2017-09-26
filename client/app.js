@@ -1,4 +1,6 @@
 const socket = io();
+let timer = null;
+let timeoutTime = 5000;
 
 $('form').submit(() => {
     if($('#message').val() == '') {
@@ -17,8 +19,17 @@ $('form').submit(() => {
 });
 
 $('#message').keydown(() => {
-       socket.emit('typing');
-        setTimeout(() => socket.emit('stop-typing'), 5000)
+    socket.emit('typing');
+    clearTimeout(timer);
+});
+
+
+$('#message').keyup(() => {
+    timer = setTimeout(() => socket.emit('stop-typing'), timeoutTime);
+});
+
+$('#message').blur(() => {
+   timer = setTimeout(() => socket.emit('stop-typing'), timeoutTime); 
 });
 
 socket.on('message', (msg) => {
@@ -30,6 +41,6 @@ socket.on('typing', () => {
 });
 
 socket.on('stop-typing', () => {
-   $('#typing').remove();
+   $('#typing').fadeOut(() => remove());
 });
 
