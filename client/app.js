@@ -18,7 +18,7 @@ $('form').submit(() => {
 });
 
 $('#message').keydown(() => {
-   if($('#message').val().length > 0 && !typing) {
+   if(!typing) {
        socket.emit('typing');
        typing = true;
        setTimeout(socket.emit('stop-typing'), 5000)
